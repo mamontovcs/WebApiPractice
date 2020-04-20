@@ -2,7 +2,10 @@
 
 namespace DAL.Models
 {
-    public class MUser
+    /// <summary>
+    /// 
+    /// </summary>
+    public class UserDto
     {
         public int UserID { get; set; }
 

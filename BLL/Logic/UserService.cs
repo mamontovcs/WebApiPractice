@@ -9,17 +9,17 @@ namespace BLL.Logic
 {
     internal class UserService : IUserService
     {
-        public bool AddUser(MUser newuser)
+        public bool AddUser(UserDto newuser)
         {
             throw new NotImplementedException();
         }
 
-        public MUser GetUserByID(int id)
+        public UserDto GetUserByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<MUser> GetUsers()
+        public ICollection<UserDto> GetUsers()
         {
             throw new NotImplementedException();
         }

@@ -4,16 +4,24 @@ using Ninject.Modules;
 
 namespace DAL.Dependencies
 {
+    /// <summary>
+    /// A loadable unit that defines bindings of data access layer
+    /// </summary>
     public class DataAccessModule : NinjectModule
     {
+        /// <summary>
+        ///  Loads the module into the kernel
+        /// </summary>
         public override void Load()
         {
-            Bind<IGenericRepository<User>>().To<AgencyRepository<User>>();
-            Bind<IGenericRepository<Role>>().To<AgencyRepository<Role>>();
-            Bind<IGenericRepository<Service>>().To<AgencyRepository<Service>>();
+            var agencyContext = new AgencyContext();
 
-            Bind<IUnitOfWork>().To<UnitOfWork>();
+            Bind<IGenericRepository<User>>().ToConstructor(x => new AgencyRepository<User>(agencyContext));
+            Bind<IGenericRepository<Role>>().ToConstructor(x => new AgencyRepository<Role>(agencyContext));
+            Bind<IGenericRepository<Service>>().ToConstructor(x => new AgencyRepository<Service>(agencyContext));
 
+            Bind<IUnitOfWork>().ToConstructor
+                (x => new UnitOfWork(agencyContext, x.Inject<IGenericRepository<Role>>(), x.Inject<IGenericRepository<User>>(), x.Inject<IGenericRepository<Service>>()));
         }
     }
 }

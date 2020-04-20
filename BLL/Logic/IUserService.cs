@@ -5,11 +5,11 @@ namespace BLL.Logic
 {
     public interface IUserService
     {
-        ICollection<MUser> GetUsers();
+        ICollection<UserDto> GetUsers();
 
-        MUser GetUserByID(int id);
+        UserDto GetUserByID(int id);
 
-        bool AddUser(MUser newuser);
+        bool AddUser(UserDto newuser);
 
         bool RemoveUserByID(int id);
     }

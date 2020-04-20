@@ -11,31 +11,24 @@ namespace StartDataBase
         {
             var kernel = new StandardKernel(new DataAccessModule());
 
-            var dataBase = kernel.Get<IUnitOfWork>();
 
-            AgencyContext data = new AgencyContext();
+            var data = kernel.Get<IUnitOfWork>();
 
-            data.Roles.Add(new Role { RoleName = "Admin" });
-            data.Roles.Add(new Role { RoleName = "Admin" });
-            data.Roles.Add(new Role { RoleName = "Admin" });
-            data.Roles.Add(new Role { RoleName = "Admin" });
-            data.SaveChanges();
+            data.Roles.Create(new Role { RoleName = "Admin" });
+            data.Roles.Create(new Role { RoleName = "Manager" });
+            data.Roles.Create(new Role { RoleName = "User" });
+            data.Roles.Create(new Role { RoleName = "Guest" });
+            data.Save();
 
-            dataBase.Roles.Create(new Role { RoleName = "Admin" });
-            dataBase.Roles.Create(new Role { RoleName = "Manager" });
-            dataBase.Roles.Create(new Role { RoleName = "User" });
-            dataBase.Roles.Create(new Role { RoleName = "Guest" });
-            dataBase.Save();
-
-            dataBase.Users.Create(new User { Login = "Admin", Pass = "Admin", RoleId = 1 });
-            dataBase.Users.Create(new User { Login = "Manager", Pass = "Manager", RoleId = 2 });
-            dataBase.Users.Create(new User { Login = "User", Pass = "User", RoleId = 3 });
-            dataBase.Users.Create(new User { Login = "Guest", Pass = "Guest", RoleId = 4 });
-            dataBase.Save();
+            data.Users.Create(new User { Login = "Admin", Pass = "Admin", RoleId = 1 });
+            data.Users.Create(new User { Login = "Manager", Pass = "Manager", RoleId = 2 });
+            data.Users.Create(new User { Login = "User", Pass = "User", RoleId = 3 });
+            data.Users.Create(new User { Login = "Guest", Pass = "Guest", RoleId = 4 });
+            data.Save();
 
 
-            dataBase.Services.Create(new Service { Name = "CarWash", Price = "200", Type = "DOM" });
-            dataBase.Save();
+            data.Services.Create(new Service { Name = "CarWash", Price = "200", Type = "DOM" });
+            data.Save();
 
 
         }

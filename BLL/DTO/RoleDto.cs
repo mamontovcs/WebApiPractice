@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace DAL.Models
+﻿namespace DAL.Models
 {
     /// <summary>
-    /// Model of Role
+    /// Data transfer object for <see cref="Role"/>
     /// </summary>
-    [Table("Roles")]
-    public class Role
+    public class RoleDto
     {
         /// <summary>
         /// Role identifier

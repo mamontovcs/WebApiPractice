@@ -1,19 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
     /// <summary>
-    /// Model of Service
+    /// Data transfer object for <see cref="Service"/>
     /// </summary>
-    [Table("Services")]
-    public class Service
+    public class ServiceDto
     {
         /// <summary>
         /// Service identifier
         /// </summary>
-        [Key]
         public int ServiceID { get; set; }
 
         /// <summary>

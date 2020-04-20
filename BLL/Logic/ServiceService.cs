@@ -15,13 +15,13 @@ namespace BLL.Logic
 
         public ServiceService()
         {
-            serviceMapper = new MapperConfiguration(cfg => cfg.CreateMap<Service, MService>()).CreateMapper();
+            serviceMapper = new MapperConfiguration(cfg => cfg.CreateMap<Service, ServiceDto>()).CreateMapper();
             unitOfWork = new StandardKernel(new DataAccessModule()).Get<IUnitOfWork>();
         }
 
-        public bool AddService(MService mService)
+        public bool AddService(ServiceDto ServiceDto)
         {
-            unitOfWork.Services.Create(new Service { Name = mService.Name, Price = mService.Price, Type = mService.Type });
+            unitOfWork.Services.Create(new Service { Name = ServiceDto.Name, Price = ServiceDto.Price, Type = ServiceDto.Type });
             unitOfWork.Save();
 
             return true;
@@ -46,17 +46,17 @@ namespace BLL.Logic
             }
         }
 
-        public MService GetServiceByID(int id)
+        public ServiceDto GetServiceByID(int id)
         {
-            return serviceMapper.Map<Service, MService>(unitOfWork.Services.GetOne(x => (x.ServiceID == id)));
+            return serviceMapper.Map<Service, ServiceDto>(unitOfWork.Services.GetOne(x => (x.ServiceID == id)));
         }
 
-        public ICollection<MService> GetServices()
+        public ICollection<ServiceDto> GetServices()
         {
             unitOfWork.Services.Create(new Service { Name = "A", Price = "500", Type = "Type" });
             unitOfWork.Save();
 
-            return serviceMapper.Map<IEnumerable<Service>, List<MService>>(unitOfWork.Services.Get());
+            return serviceMapper.Map<IEnumerable<Service>, List<ServiceDto>>(unitOfWork.Services.Get());
         }
 
         public bool RemoveServiceByID(int id)

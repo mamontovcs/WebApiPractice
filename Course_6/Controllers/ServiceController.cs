@@ -10,7 +10,7 @@ namespace Course_6.Controllers
     public class ServiceController : ApiController
     {
         // GET: api/Service
-        public IEnumerable<MService> Get()
+        public IEnumerable<ServiceDto> Get()
         {
             var kernel = new StandardKernel(new BusinessLogicModule());
             var service = kernel.Get<IServiceService>();

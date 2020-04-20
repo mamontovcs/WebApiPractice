@@ -9,11 +9,11 @@ namespace BLL.Logic
 {
     public interface IServiceService
     {
-        ICollection<MService> GetServices();
+        ICollection<ServiceDto> GetServices();
 
-        MService GetServiceByID(int id);
+        ServiceDto GetServiceByID(int id);
 
-        bool AddService(MService mService);
+        bool AddService(ServiceDto mService);
 
         bool RemoveServiceByID(int id);
 
