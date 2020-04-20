@@ -20,7 +20,7 @@ namespace BLL.Logic
         /// <summary>
         /// Transforms an input object of one type into an output object of a different type
         /// </summary>
-        private IMapper _serviceMapper;
+        private readonly IMapper _serviceMapper;
 
         /// <summary>
         /// Creates instance of <see cref="ServiceService"/>
@@ -93,7 +93,7 @@ namespace BLL.Logic
         }
 
         /// <summary>
-        /// Removes sevices from database
+        /// Removes services from database
         /// </summary>
         /// <param name="id">Service identifier</param>
         public void RemoveServiceByID(int id)
