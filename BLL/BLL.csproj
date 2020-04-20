@@ -62,9 +62,9 @@
     <Compile Include="Logic\IUserService.cs" />
     <Compile Include="Logic\ServiceService.cs" />
     <Compile Include="Logic\UserService.cs" />
-    <Compile Include="Models\MRole.cs" />
-    <Compile Include="Models\MService.cs" />
-    <Compile Include="Models\MUser.cs" />
+    <Compile Include="DTO\RoleDto.cs" />
+    <Compile Include="DTO\ServiceDto.cs" />
+    <Compile Include="DTO\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

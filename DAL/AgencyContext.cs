@@ -11,7 +11,7 @@ namespace DAL
     internal class AgencyContext : DbContext
     {
         /// <summary>
-        /// Creates insance of AgencyContext
+        /// Creates instance of AgencyContext
         /// </summary>
         public AgencyContext() : base("name=AgencyDatabase")
         {

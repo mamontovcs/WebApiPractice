@@ -1,4 +1,6 @@
-﻿namespace DAL.Models
+﻿using DAL.Models;
+
+namespace BLL.DTO
 {
     /// <summary>
     /// Data transfer object for <see cref="Role"/>
@@ -8,7 +10,7 @@
         /// <summary>
         /// Role identifier
         /// </summary>
-        public int RoleID { get; set; }
+        public int RoleId { get; set; }
 
         /// <summary>
         /// Role name

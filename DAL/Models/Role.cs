@@ -11,7 +11,7 @@ namespace DAL.Models
         /// <summary>
         /// Role identifier
         /// </summary>
-        public int RoleID { get; set; }
+        public int RoleId { get; set; }
 
         /// <summary>
         /// Role name

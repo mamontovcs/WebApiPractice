@@ -14,7 +14,7 @@ namespace DAL.Models
         /// Service identifier
         /// </summary>
         [Key]
-        public int ServiceID { get; set; }
+        public int ServiceId { get; set; }
 
         /// <summary>
         /// Service name

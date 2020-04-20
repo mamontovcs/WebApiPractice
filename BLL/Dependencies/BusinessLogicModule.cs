@@ -1,4 +1,7 @@
 ﻿using BLL.Logic;
+using DAL.Dependencies;
+using DAL.Repository;
+using Ninject;
 using Ninject.Modules;
 
 namespace BLL.Dependencies
@@ -13,8 +16,9 @@ namespace BLL.Dependencies
         /// </summary>
         public override void Load()
         {
-            Bind<IServiceService>().To<ServiceService>();
-            Bind<IUserService>().To<UserService>();
+            var unitOfWork = new StandardKernel(new DataAccessModule()).Get<IUnitOfWork>();
+            Bind<IServiceService>().ToConstructor(x => new ServiceService(unitOfWork));
+            Bind<IUserService>().ToConstructor(x => new UserService(unitOfWork));
         }
     }
 }

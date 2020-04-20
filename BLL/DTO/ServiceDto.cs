@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DAL.Models;
 
-namespace DAL.Models
+namespace BLL.DTO
 {
     /// <summary>
     /// Data transfer object for <see cref="Service"/>
@@ -10,7 +11,7 @@ namespace DAL.Models
         /// <summary>
         /// Service identifier
         /// </summary>
-        public int ServiceID { get; set; }
+        public int ServiceId { get; set; }
 
         /// <summary>
         /// Service name

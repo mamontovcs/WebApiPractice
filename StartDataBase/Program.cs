@@ -1,12 +1,18 @@
-﻿using DAL;
-using DAL.Dependencies;
+﻿using DAL.Dependencies;
 using DAL.Models;
 using DAL.Repository;
 using Ninject;
+
 namespace StartDataBase
 {
+    /// <summary>
+    /// Class for adding start data to database
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Adds start data to database
+        /// </summary>
         static void Main(string[] args)
         {
             var kernel = new StandardKernel(new DataAccessModule());
@@ -29,8 +35,6 @@ namespace StartDataBase
 
             data.Services.Create(new Service { Name = "CarWash", Price = "200", Type = "DOM" });
             data.Save();
-
-
         }
     }
 }
