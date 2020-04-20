@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
+using BLL.DTO;
 using DAL.Models;
 using DAL.Repository;
 

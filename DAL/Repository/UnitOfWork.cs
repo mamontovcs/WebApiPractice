@@ -33,7 +33,7 @@ namespace DAL.Repository
         /// <summary>
         /// Flag to define that data is disposed
         /// </summary>
-        private bool IsDisposed;
+        private bool _isDisposed;
 
         /// <summary>
         /// Creates instance of <see cref="UnitOfWork"/>
@@ -56,13 +56,13 @@ namespace DAL.Repository
         /// <param name="disposing">If true - dispose , else do nothing</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (IsDisposed) return;
+            if (_isDisposed) return;
             if (disposing)
             {
                 _agencyContext.Dispose();
             }
 
-            IsDisposed = true;
+            _isDisposed = true;
         }
 
         /// <summary>

@@ -3,6 +3,7 @@ using DAL.Models;
 using DAL.Repository;
 using System;
 using System.Collections.Generic;
+using BLL.DTO;
 
 namespace BLL.Logic
 {
@@ -79,7 +80,7 @@ namespace BLL.Logic
         /// <returns>Service with corresponding identifier</returns>
         public ServiceDto GetServiceByID(int id)
         {
-            return _serviceMapper.Map<Service, ServiceDto>(_unitOfWork.Services.GetOne(x => (x.ServiceID == id)));
+            return _serviceMapper.Map<Service, ServiceDto>(_unitOfWork.Services.GetOne(x => (x.ServiceId == id)));
         }
 
         /// <summary>

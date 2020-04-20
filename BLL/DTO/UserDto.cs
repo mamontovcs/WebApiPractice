@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DAL.Models;
 
-namespace DAL.Models
+namespace BLL.DTO
 {
     /// <summary>
     /// Data transfer object for <see cref="User"/>

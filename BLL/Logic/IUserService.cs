@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using System.Collections.Generic;
+using BLL.DTO;
 
 namespace BLL.Logic
 {

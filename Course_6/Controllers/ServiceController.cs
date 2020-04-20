@@ -1,9 +1,9 @@
 ﻿using BLL.Dependencies;
 using BLL.Logic;
-using DAL.Models;
 using Ninject;
 using System.Collections.Generic;
 using System.Web.Http;
+using BLL.DTO;
 
 namespace Course_6.Controllers
 {
@@ -12,8 +12,13 @@ namespace Course_6.Controllers
         // GET: api/Service
         public IEnumerable<ServiceDto> Get()
         {
+
             var kernel = new StandardKernel(new BusinessLogicModule());
             var service = kernel.Get<IServiceService>();
+
+            service.AddService(new ServiceDto(){Name = "First"});
+            service.AddService(new ServiceDto() { Name = "First" });
+            service.AddService(new ServiceDto() { Name = "First" });
 
             var test = service.GetServices();
 
