@@ -49,7 +49,7 @@ namespace BLL.Logic
         /// <returns></returns>
         public UserDto GetUserByID(int id)
         {
-            return _userMapper.Map<User, UserDto>(_unitOfWork.Users.GetOne(x => (x.UserID == id)));
+            return _userMapper.Map<User, UserDto>(_unitOfWork.Users.GetOne(x => (x.UserId == id)));
         }
 
         /// <summary>

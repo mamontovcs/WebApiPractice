@@ -18,7 +18,7 @@ namespace DAL.Repository
         /// <summary>
         /// DbSet represents the collection of all TEntity in the context
         /// </summary>
-        private readonly DbSet<TEntity> _dataContext;
+        private readonly DbSet<TEntity> _dataBaseSet;
 
         /// <summary>
         /// Creates instance of <see cref="AgencyRepository{TEntity}"/>
@@ -27,7 +27,7 @@ namespace DAL.Repository
         public AgencyRepository(AgencyContext context)
         {
             _context = context;
-            _dataContext = context.Set<TEntity>();
+            _dataBaseSet = context.Set<TEntity>();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace DAL.Repository
         /// <param name="item"><see cref="TEntity"/> item to add</param>
         public void Create(TEntity item)
         {
-            _dataContext.Add(item);
+            _dataBaseSet.Add(item);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace DAL.Repository
         /// <returns><see cref="TEntity"/> object</returns>
         public TEntity FindById(int id)
         {
-            return _dataContext.Find(id);
+            return _dataBaseSet.Find(id);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace DAL.Repository
         /// from corresponding <see cref="DbContext"/></returns>
         public IEnumerable<TEntity> Get()
         {
-            return _dataContext.AsNoTracking().ToList();
+            return _dataBaseSet.AsNoTracking().ToList();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace DAL.Repository
         /// from corresponding <see cref="DbContext"/></returns>
         public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate)
         {
-            return _dataContext.AsNoTracking().Where(predicate).ToList();
+            return _dataBaseSet.AsNoTracking().Where(predicate).ToList();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace DAL.Repository
         /// from corresponding <see cref="DbContext"/></returns>
         public TEntity GetOne(Func<TEntity, bool> predicate)
         {
-            return _dataContext.AsNoTracking().Where(predicate).FirstOrDefault();
+            return _dataBaseSet.AsNoTracking().Where(predicate).FirstOrDefault();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace DAL.Repository
         {
             try
             {
-                _dataContext.Remove(item);
+                _dataBaseSet.Remove(item);
             }
             catch (ArgumentNullException)
             {

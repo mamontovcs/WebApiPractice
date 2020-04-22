@@ -9,6 +9,7 @@ namespace BLL.Logic
 {
     /// <summary>
     /// Service for agency services
+    /// Defines properties and methods for agency services
     /// </summary>
     internal class ServiceService : IServiceService
     {
@@ -45,6 +46,21 @@ namespace BLL.Logic
             catch (Exception exception)
             {
                 throw new Exception("Data can not be added!" + $"/n{exception.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Updates Service with corresponding identifier
+        /// </summary>
+        /// <param name="id">Service identifier</param>
+        /// <param name="serviceDto">Data transfer object for <see cref="Service"/></param>
+        public void UpdateService(int id, ServiceDto serviceDto)
+        {
+            var serviceForUpdate = GetServiceByID(id);
+
+            if (serviceForUpdate != null)
+            {
+                _unitOfWork.Services.Update(_serviceMapper.Map<ServiceDto, Service>(serviceForUpdate));
             }
         }
 

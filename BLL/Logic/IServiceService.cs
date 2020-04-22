@@ -29,7 +29,14 @@ namespace BLL.Logic
         void AddService(ServiceDto serviceDto);
 
         /// <summary>
-        /// Removes sevices from database
+        /// Updates Service with corresponding identifier
+        /// </summary>
+        /// <param name="id">Service identifier</param>
+        /// <param name="serviceDto">Data transfer object for <see cref="Service"/></param>
+        void UpdateService(int id, ServiceDto serviceDto);
+
+        /// <summary>
+        /// Removes services from database
         /// </summary>
         /// <param name="id">Service identifier</param>
         void RemoveServiceByID(int id);

@@ -14,7 +14,7 @@ namespace DAL.Models
         /// User identifier
         /// </summary>
         [Key]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         /// <summary>
         /// User's name

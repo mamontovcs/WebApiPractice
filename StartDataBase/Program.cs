@@ -17,7 +17,6 @@ namespace StartDataBase
         {
             var kernel = new StandardKernel(new DataAccessModule());
 
-
             var data = kernel.Get<IUnitOfWork>();
 
             data.Roles.Create(new Role { RoleName = "Admin" });
@@ -31,7 +30,6 @@ namespace StartDataBase
             data.Users.Create(new User { Login = "User", Pass = "User", RoleId = 3 });
             data.Users.Create(new User { Login = "Guest", Pass = "Guest", RoleId = 4 });
             data.Save();
-
 
             data.Services.Create(new Service { Name = "CarWash", Price = "200", Type = "DOM" });
             data.Save();
