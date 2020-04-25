@@ -19,7 +19,7 @@ namespace Course_6.Controllers
         /// <summary>
         /// Creates instance of <see cref="ServiceController"/>
         /// </summary>
-        /// <param name="serviceService"></param>
+        /// <param name="serviceService">Service for agency services</param>
         public ServiceController(IServiceService serviceService)
         {
             _serviceService = serviceService;

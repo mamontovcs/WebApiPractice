@@ -24,11 +24,21 @@ namespace BLL.Logic
         private readonly IMapper _serviceMapper;
 
         /// <summary>
+        /// Transforms an input object of one type into an output object of a different type
+        /// </summary>
+        private readonly IMapper _serviceUpdateMapper;
+
+        /// <summary>
         /// Creates instance of <see cref="ServiceService"/>
         /// </summary>
         public ServiceService(IUnitOfWork unitOfWork)
         {
-            _serviceMapper = new MapperConfiguration(cfg => cfg.CreateMap<Service, ServiceDto>()).CreateMapper();
+            _serviceMapper = new MapperConfiguration(cfg => cfg.CreateMap<Service, ServiceDto>()
+            .ForMember(x => x.UsersWhoBought, y => y.Ignore())).CreateMapper();
+
+            _serviceUpdateMapper = new MapperConfiguration(cfg => cfg.CreateMap<ServiceDto, Service>()
+            .ForMember(x => x.UsersWhoBought, y => y.Ignore())).CreateMapper();
+
             _unitOfWork = unitOfWork;
         }
 
@@ -60,17 +70,17 @@ namespace BLL.Logic
 
             if (serviceForUpdate != null)
             {
-                _unitOfWork.Services.Update(_serviceMapper.Map<ServiceDto, Service>(serviceForUpdate));
+                _unitOfWork.Services.Update(_serviceUpdateMapper.Map<ServiceDto, Service>(serviceDto));
             }
         }
 
         /// <summary>
-        /// Provides logic for buying service
+        /// Provides logic for selling service
         /// </summary>
         /// <param name="userId">User identifier</param>
         /// <param name="serviceId">Service identifier</param>
         /// <returns></returns>
-        public bool BuyService(int userId, int serviceId)
+        public bool SellService(int userId, int serviceId)
         {
             var user = _unitOfWork.Users.FindById(userId);
 
@@ -116,7 +126,7 @@ namespace BLL.Logic
         {
             try
             {
-                _unitOfWork.Users.Remove(_unitOfWork.Users.FindById(id));
+                _unitOfWork.Services.Remove(_unitOfWork.Services.FindById(id));
                 _unitOfWork.Save();
             }
             catch (Exception exception)

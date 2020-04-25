@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Data.Entity.Migrations;
 
 namespace DAL.Repository
 {
@@ -101,7 +102,8 @@ namespace DAL.Repository
         /// <param name="item"><see cref="TEntity"/> item to update</param>
         public void Update(TEntity item)
         {
-            _context.Entry(item).State = EntityState.Modified;
+            _context.Set<TEntity>().AddOrUpdate(item);
+            _context.SaveChanges();
         }
     }
 }

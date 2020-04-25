@@ -22,14 +22,24 @@ namespace BLL.Logic
         private readonly IMapper _userMapper;
 
         /// <summary>
+        /// Transforms an input object of one type into an output object of a different type
+        /// </summary>
+        private readonly IMapper _userUpdateMapper;
+
+        /// <summary>
         ///  Creates instance of <see cref="UserService"/>
         /// </summary>
         /// <param name="unitOfWork">Maintains a list of objects affected by a business
         /// transaction and coordinates the writing out of changes</param>
         public UserService(IUnitOfWork unitOfWork)
         {
+            _userMapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDto>()
+            .ForMember(x => x.Services, y => y.Ignore()).ForMember(x => x.Role, y => y.Ignore())).CreateMapper();
+
+            _userUpdateMapper = new MapperConfiguration(cfg => cfg.CreateMap<UserDto, User>()
+            .ForMember(x => x.Services, y => y.Ignore()).ForMember(x => x.Role, y => y.Ignore())).CreateMapper();
+
             _unitOfWork = unitOfWork;
-            _userMapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDto>()).CreateMapper();
         }
 
         /// <summary>
@@ -69,6 +79,21 @@ namespace BLL.Logic
         {
             _unitOfWork.Users.Remove(_unitOfWork.Users.FindById(id));
             _unitOfWork.Save();
+        }
+
+        /// <summary>
+        /// Updates User with corresponding identifier
+        /// </summary>
+        /// <param name="id">User identifier</param>
+        /// <param name="userDto">Updated user</param>
+        public void Updateuser(int id, UserDto userDto)
+        {
+            var userForUpdate = GetUserByID(id);
+
+            if (userForUpdate != null)
+            {
+                _unitOfWork.Users.Update(_userUpdateMapper.Map<UserDto, User>(userDto));
+            }
         }
     }
 }

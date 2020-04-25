@@ -6,6 +6,7 @@ namespace BLL.Logic
 {
     /// <summary>
     /// Service for agency services
+    /// Defines properties and methods for agency services
     /// </summary>
     public interface IServiceService
     {
@@ -42,11 +43,11 @@ namespace BLL.Logic
         void RemoveServiceByID(int id);
 
         /// <summary>
-        /// Provides logic for buying service
+        /// Provides logic for selling service
         /// </summary>
         /// <param name="userId">User identifier</param>
         /// <param name="serviceId">Service identifier</param>
         /// <returns></returns>
-        bool BuyService(int userId, int serviceId);
+        bool SellService(int userId, int serviceId);
     }
 }

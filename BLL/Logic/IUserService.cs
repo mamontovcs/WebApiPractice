@@ -32,5 +32,12 @@ namespace BLL.Logic
         /// </summary>
         /// <param name="id">User identifier</param>
         void RemoveUserByID(int id);
+
+        /// <summary>
+        /// Updates User with corresponding identifier
+        /// </summary>
+        /// <param name="id">User identifier</param>
+        /// <param name="userDto">Updated user</param>
+        void Updateuser(int id, UserDto userDto);
     }
 }
