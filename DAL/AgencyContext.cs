@@ -22,20 +22,20 @@ namespace DAL
         /// be queried from the database, of a given type. DbSet objects are created from
         /// a DbContext using the DbContext.Set method.
         /// </summary>
-        public DbSet<Role> Roles { get; set; }
+        public IDbSet<Role> Roles { get; set; }
 
         /// <summary>
         /// A DbSet represents the collection of all Users in the context, or that can
         /// be queried from the database, of a given type. DbSet objects are created from
         /// a DbContext using the DbContext.Set method.
         /// </summary>
-        public DbSet<User> Users { get; set; }
+        public IDbSet<User> Users { get; set; }
 
         /// <summary>
         /// A DbSet represents the collection of all Services in the context, or that can
         /// be queried from the database, of a given type. DbSet objects are created from
         /// a DbContext using the DbContext.Set method.
         /// </summary>
-        public DbSet<Service> Services { get; set; }
+        public IDbSet<Service> Services { get; set; }
     }
 }
